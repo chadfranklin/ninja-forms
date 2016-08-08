@@ -118,7 +118,6 @@ class Ninja_Forms_Loading {
 
 	function setup_field_data() {
 		global $current_user, $post, $ninja_forms_fields;
-		
 		$form_id = $this->data['form_ID'];
 		$field_results = ninja_forms_get_fields_by_form_id($form_id);
 		//$field_results = apply_filters('ninja_forms_display_fields_array', $field_results, $form_id);
@@ -166,7 +165,7 @@ class Ninja_Forms_Loading {
 		    	$post_title 		= '';
 		    	$post_author_id		= '';
 		    	$post_type			= '';
-		    	$post_url 			= '';
+		    	$post_url			= '';
 		    }
 
 		    switch( $default_value ){
@@ -218,8 +217,7 @@ class Ninja_Forms_Loading {
 					}
 					break;
 			}
-					
-
+			
 			$this->data['fields'][$field_id] = $default_value;
 			$field_row = ninja_forms_get_field_by_id( $field_id );
 			$field_row['data']['field_class'] = 'ninja-forms-field';
