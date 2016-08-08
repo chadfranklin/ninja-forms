@@ -215,7 +215,7 @@ jQuery(document).ready(function($) {
 	// Default Value
 	$(document).on( 'change', '.ninja-forms-_text-default-value', function(){
 		var id = this.id.replace('default_value_', '');
-		if( this.value == '_custom' || this.value == 'querystring' ){
+		if( this.value == '_custom' || this.value == 'querystring' || this.value == 'custom_post_meta' ){
 			$("#ninja_forms_field_" + id + "_default_value").val('');
 			$("#default_value_label_" + id).show();
 			$("#ninja_forms_field_" + id + "_default_value").focus();

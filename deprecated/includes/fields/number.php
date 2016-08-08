@@ -72,6 +72,7 @@ function ninja_forms_field_number_edit( $field_id, $data ) {
 				<option value="" <?php if( $default_value == '' ) { echo 'selected'; $custom = 'no'; } ?>><?php _e( 'None', 'ninja-forms' ); ?></option>
 				<option value="_user_id" <?php if( $default_value == '_user_id') { echo 'selected'; $custom = 'no'; } ?>><?php _e( 'User ID (If logged in)', 'ninja-forms' ); ?></option>
 				<option value="post_id" <?php if( $default_value == 'post_id') { echo 'selected'; $custom = 'no'; } ?>><?php _e( 'Post / Page ID (If available)', 'ninja-forms' ); ?></option>
+				<option value="post_author_id" <?php if( $default_value == 'post_author_id') { echo 'selected'; $custom = 'no'; } ?>><?php _e( 'Post / Page Author ID (If available)', 'ninja-forms' ); ?></option>
 				<option value="_custom" <?php if( $custom != 'no') { echo 'selected'; } ?>><?php _e( 'Custom', 'ninja-forms' ); ?> -></option>
 			</select>
 		</span>

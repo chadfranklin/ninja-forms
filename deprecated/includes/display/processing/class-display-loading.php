@@ -118,6 +118,7 @@ class Ninja_Forms_Loading {
 
 	function setup_field_data() {
 		global $current_user, $post, $ninja_forms_fields;
+		
 		$form_id = $this->data['form_ID'];
 		$field_results = ninja_forms_get_fields_by_form_id($form_id);
 		//$field_results = apply_filters('ninja_forms_display_fields_array', $field_results, $form_id);
@@ -157,10 +158,14 @@ class Ninja_Forms_Loading {
 		    if ( is_object ( $post ) ) {
 			    $post_ID 			= $post->ID;
 			    $post_title 		= $post->post_title;
+			    $post_author_id		= $post->post_author;
+			    $post_type			= $post->post_type;
 			    $post_url			= get_permalink( $post_ID );
 		    } else {
 		    	$post_ID      		= '';
 		    	$post_title 		= '';
+		    	$post_author_id		= '';
+		    	$post_type			= '';
 		    	$post_url 			= '';
 		    }
 
@@ -186,6 +191,12 @@ class Ninja_Forms_Loading {
 				case 'post_title':
 					$default_value = $post_title;
 					break;
+				case 'post_author_id':
+					$default_value = $post_author_id;
+					break;
+				case 'post_type';
+					$default_value = $post_type;
+					break;
 				case 'post_url':
 					$default_value = $post_url;
 					break;
@@ -202,8 +213,12 @@ class Ninja_Forms_Loading {
 					if ( 'querystring' == $default_value_type ) {
 						$default_value = isset ( $_GET[ $default_value ] ) ? stripslashes( esc_html( $_GET[ $default_value ] ) ) : '';
 					}
+					else if ( 'custom_post_meta' == $default_value_type ) {
+						$default_value = get_post_meta( $post_ID, $default_value, true );
+					}
 					break;
 			}
+					
 
 			$this->data['fields'][$field_id] = $default_value;
 			$field_row = ninja_forms_get_field_by_id( $field_id );

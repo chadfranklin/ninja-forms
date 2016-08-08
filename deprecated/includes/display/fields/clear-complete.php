@@ -36,10 +36,14 @@ function nf_clear_complete( $form_id ) {
 	    if ( is_object ( $post ) ) {
 		    $post_ID 			= $post->ID;
 		    $post_title 		= $post->post_title;
+		    $post_author_id		= $post->post_author;
+		    $post_type			= $post->post_type;
 		    $post_url			= get_permalink( $post_ID );
 	    } else {
 	    	$post_ID      		= '';
 	    	$post_title 		= '';
+	    	$post_author_id		= '';
+	    	$post_type			= '';
 	    	$post_url 			= '';
 	    }
 
@@ -64,6 +68,12 @@ function nf_clear_complete( $form_id ) {
 				break;
 			case 'post_title':
 				$default_value = $post_title;
+				break;
+			case 'post_author_id':
+				$default_value = $post_author_id;
+				break;
+			case 'post_type';
+				$default_value = $post_type;
 				break;
 			case 'post_url':
 				$default_value = $post_url;
